@@ -1,24 +1,35 @@
-# CI/CD Node.js Microservice
+# CI/CD Pipeline for Node.js Microservice 🚀
 
-This project demonstrates a Node.js microservice deployed via CI/CD pipeline using GitHub Actions, Docker, NGINX, and Terraform on AWS EC2.
+This project demonstrates a complete DevOps workflow by deploying a Node.js microservice to an AWS EC2 instance using Docker, NGINX, and GitHub Actions.
 
-## Stack
+## 🔧 Tech Stack
+
 - Node.js
 - Docker
 - GitHub Actions
-- Terraform
 - AWS EC2
-- NGINX
+- NGINX (Reverse Proxy)
+- Terraform (Infra-as-Code - optional)
 
-## How It Works
-1. Code push triggers GitHub Actions.
-2. Docker image is built and pushed to Docker Hub.
-3. SSH into EC2 to pull and deploy the container.
-4. NGINX proxies traffic to the Node.js container.
+## ⚙️ Features
 
-## Terraform Setup
+- REST API microservice built with Express.js
+- Dockerized application
+- CI/CD workflow with GitHub Actions:
+  - Builds Docker image
+  - Pushes to Docker Hub
+  - SSH into EC2 and deploys the container
+- NGINX for production-level reverse proxy
+
+## 🚀 Deployment Flow
+
+1. Code pushed to `main` branch
+2. GitHub Action triggered
+3. Docker image built and pushed
+4. SSH to EC2 → pull image and run container
+5. App runs on `http://<ec2-ip>:3000`
+
+## 🧪 Usage
+
 ```bash
-cd terraform
-terraform init
-terraform apply -var='key_name=your-key-name'
-```
+curl http://<EC2_PUBLIC_IP>:3000
